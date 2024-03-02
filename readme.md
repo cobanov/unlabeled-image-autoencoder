@@ -3,7 +3,7 @@
 
 ## Overview
 
-This project is focused on building and utilizing an autoencoder for the unlabeled image datasets. The autoencoder is designed to compress the images into a lower-dimensional representation and then reconstruct them from this compressed form. This project includes the training of the autoencoder, extracting features from the any image test dataset, and visualizing the embeddings using t-SNE to reduce dimensionality further for visualization.
+This project focuses on building and utilizing an autoencoder for clustering unlabeled image datasets. The autoencoder is designed to compress images into a lower-dimensional representation and then reconstruct them from this compressed form. The project includes training the autoencoder, extracting features from any image test dataset, and visualizing the embeddings using t-SNE to further reduce dimensionality for visualization.
 
 ## Features
 
