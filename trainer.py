@@ -57,7 +57,7 @@ for epoch in range(epochs):
     )
 
     # Save model state dictionary
-    torch.save(model.state_dict(), f"models/model_{epoch}.pth")
+    torch.save(model, f"models/model_{epoch}.pth")
 
 
 # Plot the training and validation losses
