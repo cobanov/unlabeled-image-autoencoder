@@ -30,23 +30,23 @@ for epoch in range(epochs):
 
     # Training phase
     model.train()
-    for i, (data, _) in enumerate(train_loader):
-        data = data.to(device)
+    for i, (train_data, _) in enumerate(train_loader):
+        train_data = train_data.to(device)
         optimizer.zero_grad()
-        outputs = model(data)
-        loss = criterion(outputs, data)
+        train_outputs = model(train_data)
+        loss = criterion(train_outputs, train_data)
         loss.backward()
         optimizer.step()
-        train_loss += loss.item() * data.size(0)
+        train_loss += loss.item() * train_data.size(0)
 
     # Validation phase
     model.eval()
     with torch.no_grad():
-        for i, (data, _) in enumerate(test_loader):
-            data = data.to(device)
-            outputs = model(data)
-            loss = criterion(outputs, data)
-            val_loss += loss.item() * data.size(0)
+        for i, (val_data, _) in enumerate(test_loader):
+            val_data = val_data.to(device)
+            val_outputs = model(val_data)
+            loss = criterion(val_outputs, val_data)
+            val_loss += loss.item() * val_data.size(0)
 
     train_loss = train_loss / len(train_loader.dataset)
     val_loss = val_loss / len(test_loader.dataset)
@@ -56,7 +56,9 @@ for epoch in range(epochs):
         f"Epoch {epoch+1}/{epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}"
     )
 
-    torch.save(model, f"models/model_{epoch}_v2.pth")
+    # Save model state dictionary
+    torch.save(model.state_dict(), f"models/model_{epoch}.pth")
+
 
 # Plot the training and validation losses
 plt.plot(train_losses, label="Train Loss")

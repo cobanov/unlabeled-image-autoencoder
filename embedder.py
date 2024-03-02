@@ -12,7 +12,7 @@ test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = torch.load("models/model_9_v2.pth").to(device)
+model = torch.load("models/model_9.pth").to(device)
 
 
 with torch.no_grad():
